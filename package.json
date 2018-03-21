@@ -2,7 +2,7 @@
   "name": "mydm-to-invoice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/main.js",
   "scripts": {
     "build": "node ./webpack/build && ./node_modules/.bin/electron-builder",
     "dev": "node ./webpack/dev",
@@ -12,6 +12,20 @@
   },
   "author": "",
   "license": "ISC",
+  "build": {
+    "productName": "mydm-to-invoice",
+    "appId": "mydm-to-invoice",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/*",
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
