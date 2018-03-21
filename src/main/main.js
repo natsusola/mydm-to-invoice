@@ -22,12 +22,12 @@ const winURL = process.env.NODE_ENV !== 'production'
 
 function createWindow() {
   let mainWindowState = windowStateKeeper({
-    defaultWidth: 1200,
+    defaultWidth: 900,
     defaultHeight: 900
   });
 
   mainWindow = new BrowserWindow({
-    width: 1200,
+    width: 900,
     height: 900,
     x: mainWindowState.x,
     y: mainWindowState.y
