@@ -2,12 +2,30 @@
   "name": "mydm-to-invoice",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/main.js",
   "scripts": {
-    "dev": "node ./webpack/dev"
+    "build": "node ./webpack/build && ./node_modules/.bin/electron-builder",
+    "dev": "node ./webpack/dev",
+    "pro": "npm run pro:main && npm run pro:renderer",
+    "pro:main": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --colors --config ./webpack/webpack.main.config.js",
+    "pro:renderer": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --colors --config ./webpack/webpack.renderer.config.js"
   },
   "author": "",
   "license": "ISC",
+  "build": {
+    "productName": "mydm-to-invoice",
+    "appId": "mydm-to-invoice",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/*",
+      "dist/**/*"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -51,6 +69,8 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "papaparse": "^4.3.7",
     "vue": "^2.5.16",
     "xlsx": "^0.12.5"
   }
