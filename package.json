@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./webpack/dev"
+    "build": "node ./webpack/build && ./node_modules/.bin/electron-builder",
+    "dev": "node ./webpack/dev",
+    "pro": "npm run pro:main && npm run pro:renderer",
+    "pro:main": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --colors --config ./webpack/webpack.main.config.js",
+    "pro:renderer": "cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --colors --config ./webpack/webpack.renderer.config.js"
   },
   "author": "",
   "license": "ISC",
